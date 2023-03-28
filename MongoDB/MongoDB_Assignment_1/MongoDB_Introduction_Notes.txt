@@ -1,0 +1,46 @@
+1. Mongo DB is a No SQL DB using the JSON objects
+
+2. Row in the Table is equal to Documents in the Collection
+	ROW - Documents
+	Table - Collection
+
+3. Each document contains the data format of JSON
+
+4. "Select * from <table> is equal to db.people.find()
+
+5. Mongo DB Key Features:
+	1. High Performance
+	2. Query API
+	3. High Availability
+	4. Horizontal Scalability
+	5. Support for Multiple Storage Engines
+
+6. To switch databases, type use <db>. For example, to switch to the examples database:
+	eg: use examples
+	    use myDB
+
+7. Create Database /Collection
+	eg: use myNewDB
+	    db.myNewCollection1.insertOne( { x: 1 } )
+
+8. Create a Collection
+	eg: db.myNewCollection2.insertOne( { x: 1 } )
+	    db.myNewCollection3.createIndex( { y: 1 } )
+
+9. VIEW - refer in the documentation
+
+10. Collections:
+	1. Capped Collection - Capped collections are fixed-size collections
+	2. Clustered Collection - creating a collection with a "clustered index"
+
+11. MongoDB Query API ???
+
+12. Definition
+	1. Data Models - Eg. Embedded Documents and Reference in documents
+	2. Indexes support the efficient execution of queries in MongoDB
+	3. MongoDB provides various features, such as authentication, access control, encryption, to secure your MongoDB
+	4. Replication: Replication provides redundancy and increases data availability. With multiple copies of data on 
+				different database servers, replication provides a level of fault tolerance against the loss of 
+				a single database server.
+	5. Sharding - Sharding is a method for distributing data across multiple machines. 
+	
