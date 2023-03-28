@@ -1,0 +1,98 @@
+=== 1 | INSERT ===
+
+db.user.insertMany([
+   {
+      user_type: 'Online User',
+      name: 'Aaditya Pillai',
+      phone_number: 1112223333,
+      email: 'aaditya.pillai@gmail.com',
+      username: 'apillai',
+      password: '4ag-65432'
+   },
+   {
+      user_type: 'In-Person User',
+      name: 'Shreya Gopalakrishnan',
+      phone_number: 3332221111,
+      email: 'sgopalakrishnan@gmail.com',
+      username: 'sgopal',
+      password: '2sg-54321'
+   }
+])
+
+- - - - - - - - - - - - - - -
+
+db.product_order.insertMany([
+   {
+      brand_name: 'Columbia',
+      price: 15,
+      discount: 5,
+      available_quantity: 20,
+      review_count: 50,
+   },
+   {
+      brand_name: 'Ray-Ban',
+      price: 150,
+      discount: 20,
+      available_quantity: 200,
+      review_count: 400,
+   },
+   {
+      brand_name: 'Apple',
+      price: 1000,
+      discount: 100,
+      available_quantity: 3000,
+      review_count: 4700,
+   }
+])
+
+- - - - - - - - - - - - - - -
+
+db.membership_card.insertMany([
+   {
+      card_type: 'Regular', 
+      card_number: 4123454444441234,
+      holder_name: 'Shreya Gopalakrishnan',
+      expiration: '07-21-2023',
+      security_code: 4444,
+   },
+   {
+      card_type: 'Amazon Prime',
+      card_number: 6123455555551234,
+      holder_name: 'Aaditya Pillai',
+      expiration: '03-04-2026',
+      security_code: 5555,
+   },
+   {
+      card_type: 'Student Primer',
+      card_number: 6576426666664321,
+      holder_name: 'Sara Ashok',
+      expiration: '09-15-2025',
+      security_code: 6666,
+   }
+])
+
+
+=== 2 | FIND COLLECTION ===
+db.user.find( { } )
+
+=== 3 | FILTER DATA ===
+db.membership_card.find( { "holder_name": "Shreya Gopalakrishnan" } );
+db.membership_card.find( { "security_code": { $lt: 6666 } } );
+db.membership_card.find( { "card_number": { $gt: 5000000000000000} } );
+
+=== 4 | FIND SPECIFIC FIELDS ===
+db.user.find( { }, { "user_type": 1, "name": 1, "phone_number": 1 } );
+db.product_order.find( { }, { "brand_name": 1, "available_quantity": 1, "review_count": 1} );
+
+=== 5 | AGGREGATE OPERATIONS ===
+db.product_order.aggregate( [
+   { $unwind: "$brand_name" },
+   {
+     $group: {
+       _id: "$brand_name",
+       bnCount: { $count: { } }
+     }
+   },
+   { $sort: { "bnCount": -1 } }
+] )
+
