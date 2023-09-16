@@ -1,0 +1,18 @@
+extends layout
+block content
+    h1.text-center Todos
+
+    .container
+        form.form-inline.d-flex.justify-content-center(action="/todo/add", method="POST")
+            label.sr-only(for='inlineFormInputName2') Name
+            input#inlineFormInputName2.form-control.mb-2.mr-sm-2.w-75(type='text',name='todo', placeholder='Type Todo....')
+            .form-check.mb-2.mr-sm-2
+            button.btn.btn-primary.mb-2.border.border-primary.rounded-0(type='submit') Add Todo
+        hr
+        ul.list-group.mt-5
+            each todo , i in todos
+                li.list-group-item.d-flex.justify-content-between.border.border-primary
+                    a(href=`#`)=todo.todo
+                    .btn-container
+                        a.btn.btn-warning.mr-2(href=`/todo/edit/${todo._id}`) edit
+                        a.btn.btn-danger(href=`/todo/delete/${todo._id}`) delete

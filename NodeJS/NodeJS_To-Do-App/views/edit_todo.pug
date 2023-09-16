@@ -1,0 +1,11 @@
+extends layout
+block content
+    h1.text-center Edit Todo
+
+    .container
+        form.form-inline.d-flex.justify-content-center(action=`/todo/edit/${todo._id}`, method="POST")
+            label.sr-only(for='inlineFormInputName2') Name
+            input#inlineFormInputName2.form-control.mb-2.mr-sm-2.w-75(type='text',name='todo', placeholder='Type Todo....' value=`${todo.todo}`)
+            .form-check.mb-2.mr-sm-2
+            button.btn.btn-primary.mb-2.border.border-primary.rounded-0(type='submit') Edit Todo
+        hr
